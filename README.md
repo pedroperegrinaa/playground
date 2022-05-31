@@ -1,5 +1,7 @@
-<center><h1>Playgrond</h1></center>
+# Playgrond 🎡
 
-<center><h2>Uso esse repositório pra brincar com coisa nova (ou velha)</h2></center>
+Uso esse repositório pra brincar com coisa nova (...ou velha).
 
+### Shell Scripts
 
+- [contador-de-views](google.com) | Esse script retorna a quantidade de views que o seu perfil do GitHub teve

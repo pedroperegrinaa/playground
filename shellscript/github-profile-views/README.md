@@ -4,7 +4,7 @@ Esse Shell Script retorna a quantidade de views que o seu perfil do GitHub teve 
 
 ## Como usar:
 
-È necessário adicionar o seguinte contador ao README.md do seu perfil do GitHub:
+É necessário adicionar o seguinte contador ao README.md do seu perfil do GitHub:
 
 ```html
 <img src="https://komarev.com/ghpvc/?username=pedroperegrinaa&style=for-the-badge&color=32325D"/>

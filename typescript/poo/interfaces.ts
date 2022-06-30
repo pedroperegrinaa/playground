@@ -86,3 +86,23 @@ class ControleRemoto implements Controlador {
     console.log('Pausando...')
   }
 }
+
+class Cachorro {
+  nome: string
+  idade: number
+  peso: number
+
+  constructor (nome: string, idade: number, peso: number) {
+    this.nome = nome
+    this.idade = idade
+    this.peso = peso
+  }
+
+  latir () {
+    console.log('Au au au')
+  }
+
+  latir (a) {
+    console.log('Au au au')
+  }
+}

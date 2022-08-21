@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+</head>
+
+<body>
+
+    <section class="card-login">
+        <h1>Login</h1>
+        <form action="" method="post">
+            <input class="input" type="email" name="ValueEmail" id="" required placeholder="email"
+                oninput="changeValue(value, name)">
+            <input class="input" type="password" name="ValuePassword" id="" required placeholder="password"
+                oninput="changeValue(value, name)">
+            <input class="btn" type="button" value="Login" onclick="login(value)">
+        </form>
+    </section>
+
+</body>
+
+<script>
+
+    let ValueEmail = ''
+    let ValuePassword = ''
+
+    function changeValue(value, name) {
+        switch (name) {
+            case 'ValueEmail':
+                ValueEmail = value
+                console.log(`${name}: ${ValueEmail}`)
+                break;
+            case 'ValuePassword':
+                ValuePassword = value
+                console.log(`${name}: ${ValuePassword}`)
+                break;
+            default:
+                break;
+        }
+    }
+
+    function login(value) {
+        if (ValueEmail == 'pedro@gmail.com' && ValuePassword == '123') {
+            alert(`Login efetuado para ${ValueEmail}!`)
+        } else {
+            alert(`Dados de login invalidos!`)
+        }
+    }
+
+
+</script>
+
+</html>

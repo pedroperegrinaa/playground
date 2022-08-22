@@ -5,17 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/particles.css">
+    <script src="scripts/particles.min.js"></script>
+
     <title>Login</title>
 </head>
 
 <body>
 
+    <div class="tenta-aqui">
+        <div id="particles-js" style="position: absolute; top: 0; z-index: 0; height: 100%; width: 100%;"></div>
+    </div>
+
     <section class="card-login">
-        <h1>Login</h1>
+        <h1>Bem-vindo!</h1>
         <form action="" method="post">
+            <label for="ValueEmail">Email:</label>
             <input class="input" type="email" name="ValueEmail" id="" required placeholder="email"
                 oninput="changeValue(value, name)">
+            <label for="ValueEmail">Password:</label>
             <input class="input" type="password" name="ValuePassword" id="" required placeholder="password"
                 oninput="changeValue(value, name)">
             <input class="btn" type="button" value="Login" onclick="login(value)">
@@ -23,6 +32,8 @@
     </section>
 
 </body>
+
+<script src="scripts/particles.js"></script>
 
 <script>
 

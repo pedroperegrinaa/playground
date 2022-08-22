@@ -14,6 +14,7 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background-color: #0d192b;
 }
 
 .card-login {
@@ -22,8 +23,16 @@ body {
     padding: 20px;
     width: 320px;
     margin: 0px auto;
-    border: 1px solid rgb(217, 217, 217);
     border-radius: 10px;
+    background-color: #14253d;
+    color: #EEE;
+    z-index: 10;
+
+}
+.card-login label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #8bacda;
 }
 
 .card-login form {
@@ -33,23 +42,28 @@ body {
 
 .input {
     border-radius: 5px;
-    margin: 5px 0px;
+    margin: 8px 0px;
     padding: 10px;
     border: none;
-    background-color: rgb(250, 250, 250);
+    background-color: #1f334e;
+}
+
+.input::placeholder {
+    color: #486282;
 }
 
 .btn {
-    border-radius: 5px;
-    margin: 5px 0px;
-    padding: 10px;
-    background-color: rgb(170, 79, 255);
-    border: none;
     cursor: pointer;
-    color: #FFF;
+    border-radius: 5px;
+    margin: 20px 0px 0px;
+    padding: 10px;
+    border: none;
+    color: #EEE;
+    background-color: #486282;
     transition: .2s;
+    font-weight: 600;
 }
 
 .btn:hover {
-    background-color: rgb(131, 42, 213);
+    background-color: #728fb8;
 }

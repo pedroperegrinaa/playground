@@ -1,0 +1,21 @@
+<script>
+
+    jQuery(document).ready(function () {
+
+        var btn = 'form[name=F1] button'; /INFORME O SELETOR DO BOTÃO/
+        var checkbox = '#form-field-aceite'; /INFORME O NOME DO ID DO CHECKBOX/
+
+        jQuery(checkbox).click(function () {
+
+            if (jQuery(this).is(':checked')) {
+
+                jQuery(btn).attr("href", "http://www.google.com/");
+
+            } else {
+
+                jQuery(btn).attr("href", "http://www.bing.com/");
+            }
+
+        });
+    });
+</script>

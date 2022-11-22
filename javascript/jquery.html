@@ -2,18 +2,20 @@
 
     jQuery(document).ready(function () {
 
-        var btn = 'form[name=F1] button'; /INFORME O SELETOR DO BOTÃO/
-        var checkbox = '#form-field-aceite'; /INFORME O NOME DO ID DO CHECKBOX/
+        var form = '#form-send';
+        var checkbox = '#form-field-aceite';
 
         jQuery(checkbox).click(function () {
 
             if (jQuery(this).is(':checked')) {
 
-                jQuery(btn).attr("href", "http://www.google.com/");
+                console.log('checado')
+                jQuery(form).prop("action", "http://www.google.com/");
 
             } else {
 
-                jQuery(btn).attr("href", "http://www.bing.com/");
+                console.log('não checado')
+                jQuery(form).prop("action", "http://www.bing.com/");
             }
 
         });

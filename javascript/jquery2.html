@@ -18,20 +18,20 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         background-color: #fff;
-        border-radius: 30px;
-        padding: 30px;
-        width: 1000px;
+        border-radius: 15px;
+        padding: 50px;
+        width: 800px;
         margin: 0 auto;
         gap: 10px 10px;
     }
 
     .base {
-        padding: 18px;
+        padding: 8px;
         border-radius: 30px;
         background-color: #f7f7f7;
         border: none;
         font-weight: 700;
-        margin: 5px;
+        margin: px;
     }
 
     .base:focus {
@@ -46,6 +46,7 @@
         flex-direction: row;
         align-items: center;
         margin: 5px;
+        white-space: nowrap;
     }
 
     .switch {
@@ -56,8 +57,18 @@
 
     .btn-enviar {
         background-color: #00BB6C;
+        padding-right: 30px;
+        padding-left: 30px;
+        padding-top: 15px;
+        padding-bottom: 15px;
         color: #FFF;
         justify-self: end;
+    }
+
+    .btn-enviar:hover {
+        background-color: #00BB6C;
+        transform: scale(0.9);
+
     }
 
     @media (max-width: 1200px) {
@@ -68,14 +79,22 @@
 
     @media (max-width: 900px) {
         .grid-container {
-            width: 500px;
+            width: 600px;
+
+        }
+
+        .texto-switch {
+            white-space: normal;
         }
     }
 
     @media (max-width: 600px) {
         .grid-container {
-            width: 80%;
+            width: 100%;
             grid-template-columns: 1fr;
+            padding: 25px 25px 25px 25px;
+            transform: scale(0.9);
+            margin: 0 auto;
         }
 
         .texto-switch {
@@ -86,18 +105,19 @@
         }
 
         .btn-enviar {
+            margin-top: 30px;
             width: 100%;
             justify-self: center;
+
         }
 
     }
 
 </style>
 
-<!-- so pra fazer o switch funcionar -->
-
 <style>
     .switch {
+        margin-top: 0px;
         position: relative;
         display: inline-block;
         width: 50px;
@@ -159,21 +179,82 @@
 
 </style>
 
-<form id="form-send" style="background-color: #888;" action="https://youtube.com.br">
+
+<style>
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
+    }
+
+</style>
+
+<form action="https://google.com" name="google-sheet1"
+    style="background-color: #fff; padding:0px 0px 0px 0px; border-radius:30px;" id="form-send">
+
     <section class="grid-container">
-        <input class="base" type="text" placeholder="Nome:">
-        <input class="base" type="text" placeholder="Email:">
+
+        <input name="name" style="border-radius:30px; border: none; font-size: 15px; padding: 15px" class="base"
+            type="text" placeholder="Nome:" id="form-name">
+
+        <input name="email" style="border-radius:30px; border: none; font-size: 15px; padding: 15px" class="base"
+            type="text" placeholder="Email:" id="form-email">
+
         <div class="texto-switch">
             Pretende a emissão do certificado?
             <div>
                 <label class="switch">
-                    <input id="form-field-aceite" type="checkbox" checked>
+                    <input id="form-field-aceite" type="checkbox" checked onclick="toggle()">
                     <span class="slider round"></span>
                 </label>
             </div>
         </div>
-        <button id="button-send" class="base btn-enviar" type="submit">Quero o certificado</button>
+
+        <button id="button-send" class="base btn-enviar">Quero o certificado</button>
+
     </section>
+
 </form>
+<script>
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxFsmC03N7s1sX49T8MoKjF0F4L_HzzYxcyiegbYCRCofYAxjqDUMPTfiX4wK01mqn5/exec'
+    const form = document.forms['google-sheet1']
+    let name = document.getElementById('form-name');
+    let email = document.getElementById('form-email');
+    let formAction = document.getElementById('form-send') || null;
+
+    let checkbox = true;
+
+    function toggle() {
+        checkbox = !checkbox
+        console.log(checkbox)
+    }
+
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                console.log('Success!', response);
+                name.value = "";
+                email.value = "";
+
+                if (checkbox === true) {
+                    console.log('checado')
+                    window.location.href = 'https://www.pedroperegrina.com/';
+                } else {
+                    console.log('nao checado')
+                    window.location.href = 'https://www.twitter.com/';
+                }
+            }
+            )
+            .catch(error =>
+                console.error('Error!', error.message)
+            )
+    })
+
+</script>
 
 </html>

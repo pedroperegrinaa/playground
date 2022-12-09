@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <title>Todo List</title>
+</head>
+
+<body style="background-color: #000;">
+    <div id="inventory">
+    </div>
+
+    <script>
+        new Vue({
+            el: '#inventory',
+            template: `
+            <ul class="max-w-md mx-4 mt-10 divide-y divide divide-gray-200 dark:divide-gray-700">
+        <li class="pb-3 pt-3 sm:pb-4" v-for="(drink, index) in drinks">
+            <div class="flex items-center space-x-4">
+                <div class="flex-shrink-0">
+                    <img class="w-10 h-10 rounded-md"
+                        :src="drink.image"
+                        alt="Neil image">
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                        {{ drink.name }}
+                    </p>
+                    <p class="text-sm text-gray-500 truncate dark:text-gray-400" >
+                        Temos {{ drink.amount }} un.
+                    </p>
+                </div>
+                <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                    {{ drink.price }} R$
+                </div>
+
+                <button v-on:click="diminuirQtd(index)" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">-</button>
+                <button v-on:click="somarQtd(index)" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3.5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">+</button>
+
+            </div>
+        </li>
+    </ul>
+`,
+            data() {
+                return {
+                    drinks: [
+                        {
+                            image: "./images/cocacola-350ml.png",
+                            name: "Coca-Cola 350ml",
+                            price: 5.00,
+                            amount: 12
+                        },
+                        {
+                            image: "./images/heineken-350ml.png",
+                            name: "Heineken 350ml",
+                            price: 7.00,
+                            amount: 6
+                        },
+                    ],
+
+                }
+            },
+            methods: {
+                somarQtd(index) {
+                    this.drinks[index].amount++
+                },
+                diminuirQtd(index) {
+                    this.drinks[index].amount--
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
+
+<!-- <div class="grid grid-cols-2 gap-4">
+    <div class="justify-center place-content-center content-center" v-for="drink in drinks">
+        <img class="rounded-md"
+            src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRtOclCD2J1PxKaIrzBUM1Ok4eHftX2mmk7mFwPnVO9Wg7cq8HvLBSgxLoR6sgjXwlKovNp3OQitgZiH-oCw1WABR--VuZLly48YsG4rNtVPbwUINLCYBiIPg&usqp=CAE"
+            height="150px" width="150px" alt="">
+        <p>
+            {{ drink.name }}
+        </p>
+        <p class="font-bold">
+            {{ drink.price }} R$
+        </p>
+        <p>
+            Temos <span class="font-bold">{{ drink.amount }}</span> unidades
+        </p>
+    </div>
+</div> -->

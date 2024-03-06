@@ -6,21 +6,21 @@ export async function refineCustomPricesTable(html: any) {
   const document = dom.window.document;
   var personalizeDiv = document.querySelector(".personalize-container");
 
-      interface OwlSlide {
-      titulo: string;
-      localizacao: string;
-      area: string;
-    }
+  interface OwlSlide {
+    titulo: string;
+    localizacao: string;
+    area: string;
+  }
 
-    interface CustomPricesTable {
+  interface CustomPricesTable {
+    title: string;
+    tables: {
       title: string;
-      tables: {
-        title: string;
-        quantity: string[];
-        headers: string[];
-        columns: string[][][];
-      }[];
-    };
+      quantity: string[];
+      headers: string[];
+      columns: string[][][];
+    }[];
+  };
 
   const dataAttributes: { [key: string]: string } = {};
 
@@ -47,7 +47,7 @@ export async function refineCustomPricesTable(html: any) {
     const dom = new JSDOM(data);
     const document = dom.window.document;
 
-    const owl = document.querySelectorAll(".owl");
+    const owl = document.querySelectorAll(".slide");
 
     let owlSlides: OwlSlide[] = [];
 
@@ -56,11 +56,17 @@ export async function refineCustomPricesTable(html: any) {
       const localizacao = owl.querySelector(".localizacao")
       const area = owl.querySelector(".area")
 
-      owlSlides[index] = {
-        titulo: titulo?.textContent?.trim().replace(/\s+/g, ' ') as string,
-        localizacao: localizacao?.textContent?.trim().replace(/\s+/g, ' ') as string,
-        area: area?.textContent?.trim().replace(/\s+/g, ' ') as string
-      }
+      console.log({
+        titulo: titulo?.textContent?.trim().replace(/\s+/g, ' ') || "",
+        localizacao: localizacao?.textContent?.trim().replace(/\s+/g, ' ') || "",
+        area: area?.textContent?.trim().replace(/\s+/g, ' ') || ""
+      })
+
+      owlSlides.push({
+        titulo: titulo?.textContent?.trim().replace(/\s+/g, ' ') || "",
+        localizacao: localizacao?.textContent?.trim().replace(/\s+/g, ' ') || "",
+        area: area?.textContent?.trim().replace(/\s+/g, ' ') || ""
+      });
     });
 
     const tables = document.querySelectorAll(".price-table-container");
@@ -127,16 +133,20 @@ export async function refineCustomPricesTable(html: any) {
           })
         });
 
-        // customPricesTable[index].tables[index2].columns!.push(customPrice.filter(Boolean));
+        customPricesTable[index].tables[index2].columns!.push(customPrice.filter(Boolean));
         // console.log("customPricesTable", customPricesTable[0].tables);
 
         return customPricesTable;
       });
     });
 
-    return { owlSlides, customPricesTable };
+    // console.log(customPricesTable[0].tables)
+
+    const newCustomPricesTable = customPricesTable[0].tables
+
+    return { owlSlides, newCustomPricesTable };
   })
-  console.log(res);
+  // console.log(res);
 
   return res
 }

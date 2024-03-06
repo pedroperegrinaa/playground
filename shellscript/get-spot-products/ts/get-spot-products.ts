@@ -15,8 +15,8 @@ import {
 export const opts = {
   headers: {
     cookie:
-      "_ga_P6EHZG9H8E=GS1.1.1709704536.42.1.1709704549.47.0.0;_ga=GA1.3.1773937727.1707591627;_gid=GA1.3.142940610.1709562067;_hjSessionUser_3563339=eyJpZCI6ImJiYTQ4MzU3LThjMTUtNTFlOS05ODhiLTUwZGMxYTcwZDNjNCIsImNyZWF0ZWQiOjE3MDc1OTE2Mjc2MzUsImV4aXN0aW5nIjp0cnVlfQ==;_gat_UA-91734355-4=1;_hjSession_3563339=eyJpZCI6IjMxY2FlMjE5LTcwYzQtNDhiYS05MmNlLTQzNjNlOTNmZjIxMSIsImMiOjE3MDk3MDQ1Mzc1OTIsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjowLCJzcCI6MH0=;PHPSESSID=s60k7g931c3t934iqkbh8v93ll;cookiePolicy=1",
-  },
+      "_ga=GA1.3.1773937727.1707591627;_ga_P6EHZG9H8E=GS1.1.1709749157.44.1.1709749169.48.0.0;_gid=GA1.3.142940610.1709562067;_hjSessionUser_3563339=eyJpZCI6ImJiYTQ4MzU3LThjMTUtNTFlOS05ODhiLTUwZGMxYTcwZDNjNCIsImNyZWF0ZWQiOjE3MDc1OTE2Mjc2MzUsImV4aXN0aW5nIjp0cnVlfQ==;_gat_UA-91734355-4=1;_hjSession_3563339=eyJpZCI6IjY5ZmVlMjNhLTExMGEtNDFjNi04ZmRhLTBiNDBkNjM2ZTQxYSIsImMiOjE3MDk3NDkxNTgzOTQsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjowLCJzcCI6MH0=;PHPSESSID=s60k7g931c3t934iqkbh8v93ll;cookiePolicy=1",
+},
 };
 
 main();
@@ -69,8 +69,9 @@ async function useURLs(url: string) {
       const downloadImages = refineDownloadImages(html);
       allProducts[0].downloadImages = downloadImages;
       const colors = refineColors(html);
-      const customPricesTable = await refineCustomPricesTable(html);
-      allProducts[0].customPricesTable = customPricesTable;
+      const {owlSlides: cardCustoms, newCustomPricesTable: tableCustoms} = await refineCustomPricesTable(html);
+
+      allProducts[0].customPricesTable = {cardCustoms: cardCustoms, tables: tableCustoms};
 
       allProducts[0].variants = [];
 

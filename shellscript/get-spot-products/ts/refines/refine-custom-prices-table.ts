@@ -1,11 +1,26 @@
 import { JSDOM } from "jsdom";
 import { opts } from "../get-spot-products";
-import { log } from "console";
 
-export function refineCustomPricesTable(html: any) {
+export async function refineCustomPricesTable(html: any) {
   const dom = new JSDOM(html);
   const document = dom.window.document;
   var personalizeDiv = document.querySelector(".personalize-container");
+
+      interface OwlSlide {
+      titulo: string;
+      localizacao: string;
+      area: string;
+    }
+
+    interface CustomPricesTable {
+      title: string;
+      tables: {
+        title: string;
+        quantity: string[];
+        headers: string[];
+        columns: string[][][];
+      }[];
+    };
 
   const dataAttributes: { [key: string]: string } = {};
 
@@ -22,7 +37,7 @@ export function refineCustomPricesTable(html: any) {
   }
   url = url.slice(0, -1);
 
-  fetch(url, opts).then((response) => {
+  const res = fetch(url, opts).then((response) => {
     if (!response.ok) {
       throw new Error("Erro ao obter os dados da API");
     }
@@ -33,22 +48,6 @@ export function refineCustomPricesTable(html: any) {
     const document = dom.window.document;
 
     const owl = document.querySelectorAll(".owl");
-
-    interface OwlSlide {
-      titulo: string;
-      localizacao: string;
-      area: string;
-    }
-
-    interface CustomPricesTable {
-      title: string;
-      tables: {
-        title: string;
-        quantity: string[];
-        headers: string[];
-        columns: string[][][];
-      }[];
-    };
 
     let owlSlides: OwlSlide[] = [];
 
@@ -62,8 +61,6 @@ export function refineCustomPricesTable(html: any) {
         localizacao: localizacao?.textContent?.trim().replace(/\s+/g, ' ') as string,
         area: area?.textContent?.trim().replace(/\s+/g, ' ') as string
       }
-
-      // console.log(owlSlides);
     });
 
     const tables = document.querySelectorAll(".price-table-container");
@@ -79,8 +76,6 @@ export function refineCustomPricesTable(html: any) {
         titles.push(title.textContent?.trim().replace(/\s+/g, ' ') as string);
       });
 
-      console.log(titles)
-      
       const newTable: CustomPricesTable = {
         title: title[index].textContent?.trim().replace(/\s+/g, ' ') as string,
         tables: [
@@ -94,10 +89,8 @@ export function refineCustomPricesTable(html: any) {
       };
 
       customPricesTable.push(newTable);
-      console.log("customPricesTable", customPricesTable);
 
       const tables = fullTable.querySelectorAll(".tabela-cor-tamanho");
-      console.log("title", title[index].textContent?.trim().replace(/\s+/g, ' ') as string);
 
       tables.forEach((table, index2) => {
 
@@ -134,12 +127,16 @@ export function refineCustomPricesTable(html: any) {
           })
         });
 
-        customPricesTable[index].tables[index2].columns!.push(customPrice.filter(Boolean));
-        console.log("index", index);
-        console.log("customPricesTable", customPricesTable[0].tables);
+        // customPricesTable[index].tables[index2].columns!.push(customPrice.filter(Boolean));
+        // console.log("customPricesTable", customPricesTable[0].tables);
 
         return customPricesTable;
       });
     });
+
+    return { owlSlides, customPricesTable };
   })
+  console.log(res);
+
+  return res
 }

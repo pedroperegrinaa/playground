@@ -55,7 +55,7 @@ async function useURLs(url: string) {
       }
       return response.text();
     })
-    .then((data) => {
+    .then(async (data) => {
       const products: any = [];
       let allProducts: any = [];
       const html = data;
@@ -69,7 +69,7 @@ async function useURLs(url: string) {
       const downloadImages = refineDownloadImages(html);
       allProducts[0].downloadImages = downloadImages;
       const colors = refineColors(html);
-      const customPricesTable = refineCustomPricesTable(html);
+      const customPricesTable = await refineCustomPricesTable(html);
       allProducts[0].customPricesTable = customPricesTable;
 
       allProducts[0].variants = [];

@@ -17,11 +17,8 @@ export function refineInfos(html: any) {
 
     const info = `${titulo} ${desc}`;
 
-    if (info !== " ") {
-      infos.push(info);
-    } else {
-      console.log("Característica não encontrada.");
-    }
+    info !== " " ? infos.push(info) : null;
+    
   });
 
   return infos;

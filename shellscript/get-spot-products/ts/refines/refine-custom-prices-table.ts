@@ -18,7 +18,7 @@ export async function refineCustomPricesTable(html: any) {
       title: string;
       quantity: string[];
       headers: string[];
-      columns: string[][][];
+      columns: string[][];
     }[];
   };
 
@@ -56,12 +56,6 @@ export async function refineCustomPricesTable(html: any) {
       const localizacao = owl.querySelector(".localizacao")
       const area = owl.querySelector(".area")
 
-      console.log({
-        titulo: titulo?.textContent?.trim().replace(/\s+/g, ' ') || "",
-        localizacao: localizacao?.textContent?.trim().replace(/\s+/g, ' ') || "",
-        area: area?.textContent?.trim().replace(/\s+/g, ' ') || ""
-      })
-
       owlSlides.push({
         titulo: titulo?.textContent?.trim().replace(/\s+/g, ' ') || "",
         localizacao: localizacao?.textContent?.trim().replace(/\s+/g, ' ') || "",
@@ -75,12 +69,33 @@ export async function refineCustomPricesTable(html: any) {
 
     tables.forEach((fullTable, index) => {
       const title = fullTable.querySelectorAll(".titulo");
-
       const titles: string[] = [];
 
       title.forEach((title, index) => {
-        titles.push(title.textContent?.trim().replace(/\s+/g, ' ') as string);
+        if (titles[index] === undefined) {
+          titles[index] = title.textContent?.trim().replace(/\s+/g, ' ') as string;
+        }
       });
+
+      if (titles.length === 0) {
+        return customPricesTable.push(
+          {
+            title: "Tabela indisponivel. Verificar manualmente.",
+            tables: [
+              {
+                title: "Tabela indisponivel. Verificar manualmente.",
+                quantity: [],
+                headers: [],
+                columns: []
+              }
+            ]
+          }
+        )
+      }
+
+      console.warn("titles", titles);
+      console.warn("titles", titles[index]);
+      console.log(url)
 
       const newTable: CustomPricesTable = {
         title: title[index].textContent?.trim().replace(/\s+/g, ' ') as string,
@@ -122,18 +137,25 @@ export async function refineCustomPricesTable(html: any) {
           const columns = row.querySelectorAll("td");
           columns.forEach((column, k) => {
             if (k === 0) {
-              customPricesTable[index].tables[index2].quantity.push(column.textContent as string);
+              customPricesTable[index].tables[index2].quantity.push(column.textContent?.replace(".", "") as string);
             }
             else {
               if (!customPrice[k]) {
                 customPrice[k] = [];
               }
-              customPrice[k].push(column.textContent as string);
+
+              let price = column.textContent?.replace("R$", "").replace(",", "").slice(0, -1);
+
+              if (price?.startsWith("0")) {
+                price = price.slice(1);
+              }
+
+              customPrice[k].push(price as string);
             }
           })
         });
 
-        customPricesTable[index].tables[index2].columns!.push(customPrice.filter(Boolean));
+        customPricesTable[index].tables[index2].columns = customPrice.filter(Boolean);
         // console.log("customPricesTable", customPricesTable[0].tables);
 
         return customPricesTable;

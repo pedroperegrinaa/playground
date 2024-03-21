@@ -1,5 +1,5 @@
 import fs from "fs";
-import urls from "./links/spot-products-lite-links.ts";
+import urls from "./links/spot-products-all-links.ts";
 
 import {
   refineJSON,
@@ -15,7 +15,7 @@ import {
 export const opts = {
   headers: {
     cookie:
-      "_ga=GA1.3.1773937727.1707591627;_ga_P6EHZG9H8E=GS1.1.1709749157.44.1.1709749169.48.0.0;_gid=GA1.3.142940610.1709562067;_hjSessionUser_3563339=eyJpZCI6ImJiYTQ4MzU3LThjMTUtNTFlOS05ODhiLTUwZGMxYTcwZDNjNCIsImNyZWF0ZWQiOjE3MDc1OTE2Mjc2MzUsImV4aXN0aW5nIjp0cnVlfQ==;_gat_UA-91734355-4=1;_hjSession_3563339=eyJpZCI6IjY5ZmVlMjNhLTExMGEtNDFjNi04ZmRhLTBiNDBkNjM2ZTQxYSIsImMiOjE3MDk3NDkxNTgzOTQsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjowLCJzcCI6MH0=;PHPSESSID=s60k7g931c3t934iqkbh8v93ll;cookiePolicy=1",
+      "_ga_P6EHZG9H8E=GS1.1.1709785827.47.1.1709785962.60.0.0;_hjSession_3563339=eyJpZCI6Ijc0YTBhZDUyLWQ3OWMtNDBjZS1hYWYxLWNhMjkxMzkzMTI5NCIsImMiOjE3MDk3ODU4MjU1ODYsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjEsImZzIjowLCJzcCI6MX0=;_hjSessionUser_3563339=eyJpZCI6ImJiYTQ4MzU3LThjMTUtNTFlOS05ODhiLTUwZGMxYTcwZDNjNCIsImNyZWF0ZWQiOjE3MDc1OTE2Mjc2MzUsImV4aXN0aW5nIjp0cnVlfQ==;_ga=GA1.3.1773937727.1707591627;_gid=GA1.3.142940610.1709562067;PHPSESSID=s60k7g931c3t934iqkbh8v93ll;cookiePolicy=1",
 },
 };
 
@@ -40,7 +40,7 @@ async function main() {
 
   console.log("\nTodas as requisições foram concluídas.");
   // console.log(results);
-  salvarJSONComoArquivo(results, "./exports/spot-products-lite");
+  salvarJSONComoArquivo(results, "./exports/spot-products-all");
 }
 
 function salvarJSONComoArquivo(jsonObjeto: any, nomeArquivo: string) {

@@ -98,9 +98,9 @@ sheetData.forEach((row: any, index: number) => {
       }
     }
 
-    prices[actualItem].quantity.push(row[8])
-    prices[actualItem].price.push(row[9])
-    prices[actualItem].percentage.push(row[10])
+    prices[actualItem].quantity.push(row[8].toString())
+    prices[actualItem].price.push((row[9] * 100).toString())
+    prices[actualItem].percentage.push(row[10].toString())
   }
 
 })
@@ -115,7 +115,7 @@ variants.map((variant: IVariant[], index) => {
 customTypes.map((customType: ICustomType[], index) => {
   if (index === 0) return
   products[index - 1].customTypes = customType
-})
+}) 
 
 prices.map((price: IPrice, index) => {
   if (index === 0) return

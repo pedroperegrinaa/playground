@@ -1,8 +1,8 @@
 const all_links = [
   "https://www.spotgifts.com.br/pt/catalogo/sacos-de-compras-algodao-dobraveis/92332/",
-  "https://www.spotgifts.com.br/pt/catalogo/sacos-tipo-mochila/92798/",
-  "https://www.spotgifts.com.br/pt/catalogo/acessorios-de-tecnologia/93282/",
-  // "https://www.spotgifts.com.br/pt/catalogo/esferograficas-ecologicas/91219/",
+  // "https://www.spotgifts.com.br/pt/catalogo/sacos-tipo-mochila/92798/",
+  // "https://www.spotgifts.com.br/pt/catalogo/acessorios-de-tecnologia/93282/",
+  "https://www.spotgifts.com.br/pt/catalogo/esferograficas-ecologicas/91219/",
   // "https://www.spotgifts.com.br/pt/catalogo/mochilas-para-pc-tablet/92167/",
   // "https://www.spotgifts.com.br/pt/catalogo/esferograficas-em-metal/81139/",
   // "https://www.spotgifts.com.br/pt/catalogo/esferograficas-ecologicas/91219/",

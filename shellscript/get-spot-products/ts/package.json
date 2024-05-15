@@ -14,6 +14,7 @@
     "@types/jsdom": "^21.1.6",
     "cli-progress": "^3.12.0",
     "colors": "^1.4.0",
-    "jsdom": "^24.0.0"
+    "jsdom": "^24.0.0",
+    "read-excel-file": "^5.8.1"
   }
 }

@@ -16,6 +16,8 @@ export async function refineCustomPricesTable(html: any) {
     title: string;
     tables: {
       title: string;
+      titleArea: string;
+      titleSubArea: string;
       quantity: string[];
       headers: string[];
       columns: string[][];
@@ -65,15 +67,33 @@ export async function refineCustomPricesTable(html: any) {
 
     const tables = document.querySelectorAll(".price-table-container");
 
+    const allTables = document.querySelectorAll(".multi-tabela-cor-tamanho-wrapper");
+
     const customPricesTable: CustomPricesTable[] = [];
 
-    tables.forEach((fullTable, index) => {
+    allTables.forEach((fullTable, index) => {
       const title = fullTable.querySelectorAll(".titulo");
       const titles: string[] = [];
+      const titleArea = fullTable.querySelectorAll(".titulo-area");
+      const titlesArea: string[] = [];
+      const titleSubArea = fullTable.querySelectorAll(".sub-titulo");
+      const titlesSubArea: string[] = [];
 
       title.forEach((title, index) => {
         if (titles[index] === undefined) {
           titles[index] = title.textContent?.trim().replace(/\s+/g, ' ') as string;
+        }
+      });
+
+      titleArea.forEach((title, index) => {
+        if (titlesArea[index] === undefined) {
+          titlesArea[index] = title.textContent?.trim().replace(/\s+/g, ' ') as string;
+        }
+      });
+
+      titleSubArea.forEach((title, index) => {
+        if (titlesSubArea[index] === undefined) {
+          titlesSubArea[index] = title.textContent?.trim().replace(/\s+/g, ' ') as string;
         }
       });
 
@@ -84,6 +104,8 @@ export async function refineCustomPricesTable(html: any) {
             tables: [
               {
                 title: "Tabela indisponivel. Verificar manualmente.",
+                titleArea: "Tabela indisponivel. Verificar manualmente.",
+                titleSubArea: "Tabela indisponivel. Verificar manualmente.",
                 quantity: [],
                 headers: [],
                 columns: []
@@ -93,15 +115,17 @@ export async function refineCustomPricesTable(html: any) {
         )
       }
 
-      console.warn("titles", titles);
-      console.warn("titles", titles[index]);
-      console.log(url)
+      // console.warn("\n titles", titles);
+      // console.warn("titles", titles[index], index);
+      // console.log(url)
 
       const newTable: CustomPricesTable = {
-        title: title[index].textContent?.trim().replace(/\s+/g, ' ') as string,
+        title: title[0].textContent?.trim().replace(/\s+/g, ' ') as string,
         tables: [
           {
             title: titles[index],
+            titleArea: titlesArea[index],
+            titleSubArea: titlesSubArea[index],
             quantity: [],
             headers: [],
             columns: []
@@ -127,7 +151,14 @@ export async function refineCustomPricesTable(html: any) {
         headersNames = headersNames.splice(1, headersNames.length);
 
         if (!customPricesTable[index].tables[index2]) {
-          customPricesTable[index].tables[index2] = { title: titles[index2], headers: [], quantity: [], columns: [] };
+          customPricesTable[index].tables[index2] = {
+            title: titles[index2],
+            titleArea: titlesArea[index2],
+            titleSubArea: titlesSubArea[index2],
+            headers: [],
+            quantity: [],
+            columns: []
+          };
         }
 
         customPricesTable[index].tables[index2].headers = headersNames
@@ -164,7 +195,22 @@ export async function refineCustomPricesTable(html: any) {
 
     // console.log(customPricesTable[0].tables)
 
-    const newCustomPricesTable = customPricesTable[0].tables
+    const newCustomPricesTable = customPricesTable.map((table) => {
+      return {
+        title: table.title,
+        tables: table.tables.map((table) => {
+          return {
+            title: table.title,
+            titleArea: table.titleArea,
+            titleSubArea: table.titleSubArea,
+            quantity: table.quantity,
+            headers: table.headers,
+            columns: table.columns
+          }
+        })
+      }
+    }
+    );
 
     return { owlSlides, newCustomPricesTable };
   })

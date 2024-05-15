@@ -1,5 +1,8 @@
 const readXlsxFile = require('read-excel-file/node')
 
+import { readFile } from 'fs/promises';
+import { join } from 'path';
+
 const filePath = './catalogo-new.xlsx'
 
 interface IVariant {
@@ -9,13 +12,13 @@ interface IVariant {
 }
 
 interface ICustomType {
-  title: string;
+  titulo: string;
 }
 
 interface IPrice {
   quantity: string[]
   price: string[]
-  percent: string[]
+  percentage: string[]
 }
 
 interface IProduct {
@@ -25,13 +28,9 @@ interface IProduct {
   sku: string
   variants?: IVariant[]
   customTypes?: {
-    title: string
+    titulo: string
   }[]
-  prices?: {
-    quantity?: string[]
-    price?: string[]
-    percent?: string[]
-  }
+  prices?: IPrice
   affiliation: string
 }
 
@@ -64,7 +63,7 @@ sheetData.forEach((row: any, index: number) => {
   }
 
   if (row[4]) {
-    console.log(row[4])
+    // console.log(row[4])
     if (!variants[actualItem]) {
       variants[actualItem] = []
     }
@@ -85,7 +84,7 @@ sheetData.forEach((row: any, index: number) => {
 
     customTypes[actualItem].push(
       {
-        title: row[7],
+        titulo: row[7],
       }
     )
   }
@@ -95,18 +94,18 @@ sheetData.forEach((row: any, index: number) => {
       prices[actualItem] = {
         quantity: [],
         price: [],
-        percent: [],
+        percentage: [],
       }
     }
 
     prices[actualItem].quantity.push(row[8])
     prices[actualItem].price.push(row[9])
-    prices[actualItem].percent.push(row[10])
+    prices[actualItem].percentage.push(row[10])
   }
 
 })
 
-console.log(prices)
+// console.log(prices)
 
 variants.map((variant: IVariant[], index) => {
   if (index === 0) return
@@ -129,7 +128,27 @@ prices.map((price: IPrice, index) => {
 // })
 
 
-console.log(JSON.stringify(products, null, 2))
+// console.log(JSON.stringify(products, null, 2))
+
+async function postAllProducts() {
+
+  for (const product of products) {
+
+    const response = await fetch('http://localhost:3000/api/products', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(product),
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+  }
+}
+
+postAllProducts()
 
 
 
@@ -186,14 +205,14 @@ console.log(JSON.stringify(products, null, 2))
 //         // ],
 //         // customTypes: [
 //         //   {
-//         //     title: row[7],
+//         //     titulo: row[7],
 //         //   },
 //         // ],
 //         // prices: {
 //         //   quantity: row[8],
 //         //   price: row[9]
 //         // },
-//         // percent: row[10],
+//         // percentage: row[10],
 //         affiliation: row[11],
 //       }
 //     )

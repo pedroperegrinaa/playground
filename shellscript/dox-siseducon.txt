@@ -1,0 +1,147 @@
+PORT     STATE    SERVICE  VERSION
+21/tcp   open     ftp      Pure-FTPd
+| ssl-cert: Subject: commonName=*.hostgator.com.br
+| Subject Alternative Name: DNS:*.hostgator.com.br, DNS:hostgator.com.br
+| Issuer: commonName=Sectigo RSA Domain Validation Secure Server CA/organizationName=Sectigo Limited/stateOrProvinceName=Greater Manchester/countryName=GB
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2023-07-10T00:00:00
+| Not valid after:  2024-07-09T23:59:59
+| MD5:   0706:cd7f:557f:2621:056a:a989:30b6:d43a
+|_SHA-1: c662:8a6c:a550:7210:4399:a2c8:28ff:0ed8:6e9d:56a6
+|_ssl-date: TLS randomness does not represent time
+22/tcp   open     ssh      OpenSSH 7.4 (protocol 2.0)
+| ssh-hostkey:
+|   1024 ce:c3:23:d3:f7:44:88:1b:9c:4a:62:2f:df:70:d6:07 (DSA)
+|_  2048 e0:d9:21:44:76:57:71:68:9a:5a:b6:4f:e3:4b:12:7b (RSA)
+25/tcp   open     smtp     Exim smtpd 4.96.2
+|_smtp-commands: Couldn't establish connection on port 25
+26/tcp   open     smtp     Exim smtpd 4.96.2
+| smtp-commands: br1092.hostgator.com.br Hello ip-209-14-148-229.fibranetbrasil.net.br [209.14.148.229], SIZE 52428800, 8BITMIME, PIPELINING, PIPECONNECT, AUTH PLAIN LOGIN, STARTTLS, HELP
+|_ Commands supported: AUTH STARTTLS HELO EHLO MAIL RCPT DATA BDAT NOOP QUIT RSET HELP
+53/tcp   open     domain   ISC BIND 9.11.4-P2 (RedHat Enterprise Linux 7)
+| dns-nsid:
+|_  bind.version: 9.11.4-P2-RedHat-9.11.4-26.P2.el7_9.9
+80/tcp   open     http     Apache httpd
+|_http-title: 500 - Erro Interno do Servidor
+110/tcp  open     pop3     Dovecot pop3d
+|_ssl-date: TLS randomness does not represent time
+|_pop3-capabilities: CAPA USER TOP PIPELINING RESP-CODES UIDL AUTH-RESP-CODE STLS SASL(PLAIN LOGIN)
+| ssl-cert: Subject: commonName=*.hostgator.com.br
+| Subject Alternative Name: DNS:*.hostgator.com.br, DNS:hostgator.com.br
+| Issuer: commonName=Sectigo RSA Domain Validation Secure Server CA/organizationName=Sectigo Limited/stateOrProvinceName=Greater Manchester/countryName=GB
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2023-07-10T00:00:00
+| Not valid after:  2024-07-09T23:59:59
+| MD5:   0706:cd7f:557f:2621:056a:a989:30b6:d43a
+|_SHA-1: c662:8a6c:a550:7210:4399:a2c8:28ff:0ed8:6e9d:56a6
+143/tcp  open     imap     Dovecot imapd
+|_imap-capabilities: post-login AUTH=LOGINA0001 LITERAL+ OK ENABLE IMAP4rev1 capabilities IDLE STARTTLS Pre-login listed ID more have SASL-IR LOGIN-REFERRALS NAMESPACE AUTH=PLAIN
+| ssl-cert: Subject: commonName=*.hostgator.com.br
+| Subject Alternative Name: DNS:*.hostgator.com.br, DNS:hostgator.com.br
+| Issuer: commonName=Sectigo RSA Domain Validation Secure Server CA/organizationName=Sectigo Limited/stateOrProvinceName=Greater Manchester/countryName=GB
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2023-07-10T00:00:00
+| Not valid after:  2024-07-09T23:59:59
+| MD5:   0706:cd7f:557f:2621:056a:a989:30b6:d43a
+|_SHA-1: c662:8a6c:a550:7210:4399:a2c8:28ff:0ed8:6e9d:56a6
+|_ssl-date: TLS randomness does not represent time
+161/tcp  filtered snmp
+443/tcp  open     ssl/http Apache httpd
+|_ssl-date: TLS randomness does not represent time
+|_http-server-header: Apache
+|_http-title: 400 Bad Request
+| ssl-cert: Subject: commonName=*.hostgator.com.br
+| Subject Alternative Name: DNS:*.hostgator.com.br, DNS:hostgator.com.br
+| Issuer: commonName=Sectigo RSA Domain Validation Secure Server CA/organizationName=Sectigo Limited/stateOrProvinceName=Greater Manchester/countryName=GB
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2023-07-10T00:00:00
+| Not valid after:  2024-07-09T23:59:59
+| MD5:   0706:cd7f:557f:2621:056a:a989:30b6:d43a
+|_SHA-1: c662:8a6c:a550:7210:4399:a2c8:28ff:0ed8:6e9d:56a6
+465/tcp  open     ssl/smtp Exim smtpd 4.96.2
+|_ssl-date: TLS randomness does not represent time
+| smtp-commands: br1092.hostgator.com.br Hello ip-209-14-148-229.fibranetbrasil.net.br [209.14.148.229], SIZE 52428800, 8BITMIME, PIPELINING, PIPECONNECT, AUTH PLAIN LOGIN, HELP
+|_ Commands supported: AUTH HELO EHLO MAIL RCPT DATA BDAT NOOP QUIT RSET HELP
+587/tcp  open     smtp     Exim smtpd 4.96.2
+| ssl-cert: Subject: commonName=*.hostgator.com.br
+| Subject Alternative Name: DNS:*.hostgator.com.br, DNS:hostgator.com.br
+| Issuer: commonName=Sectigo RSA Domain Validation Secure Server CA/organizationName=Sectigo Limited/stateOrProvinceName=Greater Manchester/countryName=GB
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2023-07-10T00:00:00
+| Not valid after:  2024-07-09T23:59:59
+| MD5:   0706:cd7f:557f:2621:056a:a989:30b6:d43a
+|_SHA-1: c662:8a6c:a550:7210:4399:a2c8:28ff:0ed8:6e9d:56a6
+| smtp-commands: br1092.hostgator.com.br Hello ip-209-14-148-229.fibranetbrasil.net.br [209.14.148.229], SIZE 52428800, 8BITMIME, PIPELINING, PIPECONNECT, AUTH PLAIN LOGIN, STARTTLS, HELP
+|_ Commands supported: AUTH STARTTLS HELO EHLO MAIL RCPT DATA BDAT NOOP QUIT RSET HELP
+993/tcp  open     ssl/imap Dovecot imapd
+|_imap-capabilities: post-login AUTH=LOGINA0001 LITERAL+ OK have IMAP4rev1 capabilities IDLE Pre-login listed ID more NAMESPACE SASL-IR LOGIN-REFERRALS ENABLE AUTH=PLAIN
+| ssl-cert: Subject: commonName=*.hostgator.com.br
+| Subject Alternative Name: DNS:*.hostgator.com.br, DNS:hostgator.com.br
+| Issuer: commonName=Sectigo RSA Domain Validation Secure Server CA/organizationName=Sectigo Limited/stateOrProvinceName=Greater Manchester/countryName=GB
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2023-07-10T00:00:00
+| Not valid after:  2024-07-09T23:59:59
+| MD5:   0706:cd7f:557f:2621:056a:a989:30b6:d43a
+|_SHA-1: c662:8a6c:a550:7210:4399:a2c8:28ff:0ed8:6e9d:56a6
+|_ssl-date: TLS randomness does not represent time
+995/tcp  open     ssl/pop3 Dovecot pop3d
+|_pop3-capabilities: CAPA RESP-CODES PIPELINING USER AUTH-RESP-CODE UIDL TOP SASL(PLAIN LOGIN)
+| ssl-cert: Subject: commonName=*.hostgator.com.br
+| Subject Alternative Name: DNS:*.hostgator.com.br, DNS:hostgator.com.br
+| Issuer: commonName=Sectigo RSA Domain Validation Secure Server CA/organizationName=Sectigo Limited/stateOrProvinceName=Greater Manchester/countryName=GB
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2023-07-10T00:00:00
+| Not valid after:  2024-07-09T23:59:59
+| MD5:   0706:cd7f:557f:2621:056a:a989:30b6:d43a
+|_SHA-1: c662:8a6c:a550:7210:4399:a2c8:28ff:0ed8:6e9d:56a6
+|_ssl-date: TLS randomness does not represent time
+2222/tcp open     ssh      OpenSSH 7.4 (protocol 2.0)
+| ssh-hostkey:
+|_  1024 ce:c3:23:d3:f7:44:88:1b:9c:4a:62:2f:df:70:d6:07 (DSA)
+3306/tcp open     mysql    MySQL 5.7.23-23
+|_ssl-date: TLS randomness does not represent time
+| mysql-info:
+|   Protocol: 10
+|   Version: 5.7.23-23
+|   Thread ID: 39050118
+|   Capabilities flags: 65535
+|   Some Capabilities: ODBCClient, Support41Auth, LongPassword, LongColumnFlag, IgnoreSigpipes, SupportsTransactions, SwitchToSSLAfterHandshake, SupportsCompression, SupportsLoadDataLocal, Speaks41ProtocolNew, FoundRows, DontAllowDatabaseTableColumn, IgnoreSpaceBeforeParenthesis, InteractiveClient, Speaks41ProtocolOld, ConnectWithDatabase, SupportsMultipleStatments, SupportsAuthPlugins, SupportsMultipleResults
+|   Status: Autocommit
+|   Salt: )]XIcd\x1D:\x0Ea9\x0B!9}Px\x7Fe~
+|_  Auth Plugin Name: mysql_native_password
+| ssl-cert: Subject: commonName=*.hostgator.com.br
+| Subject Alternative Name: DNS:*.hostgator.com.br, DNS:hostgator.com.br
+| Issuer: commonName=Sectigo RSA Domain Validation Secure Server CA/organizationName=Sectigo Limited/stateOrProvinceName=Greater Manchester/countryName=GB
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2023-07-10T00:00:00
+| Not valid after:  2024-07-09T23:59:59
+| MD5:   0706:cd7f:557f:2621:056a:a989:30b6:d43a
+|_SHA-1: c662:8a6c:a550:7210:4399:a2c8:28ff:0ed8:6e9d:56a6
+Service Info: Host: br1092.hostgator.com.br; OS: Linux; CPE: cpe:/o:redhat:enterprise_linux:7
+
+NSE: Script Post-scanning.
+Initiating NSE at 19:22
+Completed NSE at 19:22, 0.00s elapsed
+Initiating NSE at 19:22
+Completed NSE at 19:22, 0.00s elapsed
+Initiating NSE at 19:22
+Completed NSE at 19:22, 0.00s elapsed
+Read data files from: /opt/homebrew/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 141.80 seconds
